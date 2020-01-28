@@ -1,0 +1,144 @@
+@import 'fonts'
+@import 'normalize'
+@import 'variables'
+
+@viewport
+  user-zoom: fixed
+
+html
+  font-size: $font-size
+
+html,
+body,
+.wrapper
+  min-height: 100%
+  width: 100%
+
+body
+  background: #f5f9fd
+  font-family: $font-family
+  font-size: 14px
+  font-weight: 400
+  line-height: $line-height
+  -webkit-font-smoothing: antialiased
+  color: rgba(30, 55, 90, .7)
+
+  *
+    -webkit-tap-highlight-color: map-get($colors, ctransparent)
+    box-sizing: border-box
+    outline: none
+
+    &::before,
+    &::after
+      box-sizing: border-box
+
+  input,
+  button
+    appearance: none
+    font-family: $font-family
+    font-size: 14px
+    font-weight: 300
+
+  input:-webkit-autofill
+    -webkit-box-shadow: inset 0 0 0 50px #2c2c2c !important
+    -webkit-text-fill-color: #fff !important
+    color: #fff !important
+
+.wrapper
+  display: flex
+  align-items: flex-start
+  justify-content: center
+  padding: 20px
+
+.block
+  background: #fff
+  background: rgba(255, 255, 255, .75)
+  box-shadow: 0 5px 20px 0 rgba(170, 195, 225, .34)
+  border-radius: 5px
+  backdrop-filter: saturate(180%) blur(20px)
+  width: 900px
+  position: relative
+
+  &-back
+    position: absolute
+    top: 13px
+    left: 15px
+    border: 2px solid rgba(255, 255, 255, .5)
+    width: 42px
+    height: 42px
+    border-radius: 50%
+    cursor: pointer
+    transition: .3s
+
+    &::before
+      content: '‹'
+      color: rgba(255, 255, 255, .5)
+      font-size: 19px
+      line-height: 35px
+      display: flex
+      align-items: center
+      justify-content: center
+
+    &:hover
+      border-color: #fff
+
+      &::before
+        color: #fff
+
+  &-loader
+    display: none
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 142px
+    height: 40px
+    margin: -20px 0 0 -71px
+    background: #fff
+    filter: contrast(20)
+
+    &-dot
+      position: absolute
+      width: 16px
+      height: 16px
+      top: 12px
+      left: 15px
+      filter: blur(4px)
+      background: #000
+      border-radius: 50%
+      transform: translateX(0)
+      animation: dot 2.8s infinite
+
+    &-dots
+      transform: translateX(0)
+      margin-top: 12px
+      margin-left: 31px
+      animation: dots 2.8s infinite
+
+      span
+        display: block
+        float: left
+        width: 16px
+        height: 16px
+        margin-left: 16px
+        filter: blur(4px)
+        background: #000
+        border-radius: 50%
+
+  &.loading
+    height: 200px
+
+    .filter,
+    .product,
+    .products
+      display: none
+
+    .block-loader
+      display: block
+
+@keyframes dot
+  50%
+    transform: translateX(96px)
+
+@keyframes dots
+  50%
+    transform: translateX(-31px)
